@@ -7,12 +7,12 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) {
 
-        List<Person> personStream = generatePersons();
-        personStream = personStream.stream()
+        List<Person> personList = generatePersons();
+        personList = personList.stream()
                 .sorted(Comparator.comparing(Person::getAge))
                 .collect(Collectors.toList());
 
-        Map<Gender, LinkedHashMap<Integer, List<Person>>> totalHashmap = personStream.stream()
+        Map<Gender, LinkedHashMap<Integer, List<Person>>> totalHashmap = personList.stream()
                 .collect(Collectors.groupingBy(Person::getGender,
                         Collectors.groupingBy(Person::getAge,
                                 LinkedHashMap::new, Collectors.toList())));
